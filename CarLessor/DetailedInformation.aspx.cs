@@ -9,6 +9,7 @@ namespace CarLessor
 {
     public partial class DetailedInformation : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,7 +21,8 @@ namespace CarLessor
 
         private void BindDataList()
         {
-            ConnectionSevice.DetailInformation(inventoryCar: GridViewDetail);
+            string query = "select * from carlessor.autos";
+            ConnectionSevice.DetailInformation(gridView: GridViewDetail, query);
         }
 
         protected void sendDetail_Click(object sender, EventArgs e)

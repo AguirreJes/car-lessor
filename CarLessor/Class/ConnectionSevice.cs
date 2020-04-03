@@ -36,16 +36,15 @@ namespace CarLessor
             return response;
         }
 
-        public static void DetailInformation(GridView inventoryCar)
+        public static void DetailInformation(GridView gridView, string querySentence)
         {
             try
             {
                 MySqlConnection connectionBd = getConnection();
-                string query = "select * from carlessor.autos";
                 MySqlCommand cmd;
-                cmd = new MySqlCommand(query, connectionBd);
-                inventoryCar.DataSource = cmd.ExecuteReader();
-                inventoryCar.DataBind();
+                cmd = new MySqlCommand(querySentence, connectionBd);
+                gridView.DataSource = cmd.ExecuteReader();
+                gridView.DataBind();
                 connectionBd.Close();
             }
             catch (Exception exc)
