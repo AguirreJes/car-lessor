@@ -18,7 +18,7 @@ namespace CarLessor
         {
             //Validar que devolvera BD como confirmacion
             //Validar BD mostrar error si no existe de lo contrario redireccionar a la consulta de datos
-            if (LoginService.SignIn(inputUser.Text, inputPassword.Text))
+            if (ConnectionSevice.SignIn(inputUser.Text, inputPassword.Text))
             {
                 Response.Redirect("Pagina de consulta");
             }

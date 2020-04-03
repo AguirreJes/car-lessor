@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CarLessor
 {
-    public class LoginService
+    public class ConnectionSevice
     {
         public static Boolean SignIn(String user, String pass)
         {
