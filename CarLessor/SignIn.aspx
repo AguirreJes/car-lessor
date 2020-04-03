@@ -10,14 +10,14 @@
                         <form class="form-signin">
                             <div class="form-label-group">
                                 <label for="inputEmail">Usuario</label>
-                                <input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus>  
+                                <asp:TextBox ID="inputUser" runat="server" type="text" class="form-control" placeholder="Usuario" required="true"> </asp:TextBox> 
                             </div>
                             <div class="form-label-group">
                                 <label for="inputPassword">Contrasena</label>
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Contrasena" required>    
+                                <asp:TextBox ID="inputPassword" runat="server" type="password" class="form-control" placeholder="Contrasena" required="true"> </asp:TextBox> 
                             </div>
                             <hr class="my-4">
-                            <button class="btn btn-lg btn-block btn btn-dark text-uppercase" type="submit" >Iniciar sesion</button>
+                            <asp:Button ID="signIn" runat="server" Text="Iniciar sesion" class="btn btn-lg btn-block btn btn-dark text-uppercase" type="submit" OnClick="signIn_Click"/>
                         </form>
                     </div>
                 </div>
