@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DetailedInformation.aspx" />
+    <Content Include="ErrorSignIn.aspx" />
     <Content Include="SignIn.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -257,6 +258,13 @@
     </Compile>
     <Compile Include="DetailedInformation.aspx.designer.cs">
       <DependentUpon>DetailedInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorSignIn.aspx.cs">
+      <DependentUpon>ErrorSignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorSignIn.aspx.designer.cs">
+      <DependentUpon>ErrorSignIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="SignIn.aspx.cs">
       <DependentUpon>SignIn.aspx</DependentUpon>

@@ -22,7 +22,7 @@ namespace CarLessor
             }
             else
             {
-                Response.Redirect("Pagina de error");
+                Response.Redirect("~/ErrorSignIn.aspx");
             }      
         }
     }
