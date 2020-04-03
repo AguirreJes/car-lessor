@@ -74,7 +74,7 @@
             <footer class="text-muted">
                 <div class="container">
                     <p class="float-right">
-                        <a href="#">Regresar al inicio</a>
+                        <a runat="server" href="Index.aspx">Regresar al inicio</a>
                     </p>
                     <p>Proyecto arrendadora de autos</p>
                 </div>
