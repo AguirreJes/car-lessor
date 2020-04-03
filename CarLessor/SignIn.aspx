@@ -7,7 +7,7 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h5 class="card-title text-center">Iniciar sesion</h5>
-                        <form class="form-signin">
+                        <div class="form-signin">
                             <div class="form-label-group">
                                 <label for="inputEmail">Usuario</label>
                                 <asp:TextBox ID="inputUser" runat="server" type="text" class="form-control" placeholder="Usuario" required="true"> </asp:TextBox> 
@@ -18,7 +18,7 @@
                             </div>
                             <hr class="my-4">
                             <asp:Button ID="signIn" runat="server" Text="Iniciar sesion" class="btn btn-lg btn-block btn btn-dark text-uppercase" type="submit" OnClick="signIn_Click"/>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
