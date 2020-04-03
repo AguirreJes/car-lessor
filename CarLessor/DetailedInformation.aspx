@@ -5,10 +5,18 @@
         <h5 class="text-center text-uppercase">Inventario de autos</h5>
         <asp:GridView ID="GridViewDetail" CssClass="table table-bordered" HeaderStyle-CssClass="bg-dark text-white" AutoGenerateColumns="False" runat="server">
             <Columns>
-                <asp:BoundField HeaderText="ID" DataField="idautos" />
+                <asp:ImageField HeaderText="Imagen" ControlStyle-Height="50" DataImageUrlField="imagen">
+                    <ControlStyle Height="50px"></ControlStyle>
+                </asp:ImageField>
+                <asp:TemplateField HeaderText="ID">
+                    <ItemTemplate>
+                        <asp:Label ID="idautos" runat="server" Text='<%# Bind("idautos") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField HeaderText="Modelo" DataField="modelo" />
                 <asp:BoundField HeaderText="Año" DataField="año" />
                 <asp:BoundField HeaderText="Tarifa día" DataField="tarifadia" />
+                <asp:BoundField HeaderText="Descripción" DataField="descripcion" />
                 <asp:BoundField HeaderText="Cantidad disponible" DataField="stock" />
                 <asp:TemplateField HeaderText="Ingrese cantidad de autos">
                     <ItemTemplate>
@@ -17,7 +25,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Ingrese cantidad de dias">
                     <ItemTemplate>
-                        <asp:TextBox ID="quantityDays" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="quantityDay" runat="server"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -25,7 +33,7 @@
         </asp:GridView>
         <div class="row">
             <div class="col-2">
-                <asp:Button ID="sendDetail" runat="server" Text="Guardar" class="btn btn-lg btn-block btn btn-dark" type="submit" OnClick="sendDetail_Click"/>
+                <asp:Button ID="sendDetail" runat="server" Text="Guardar" class="btn btn-lg btn-block btn btn-dark" type="submit" OnClick="sendDetail_Click" />
             </div>
         </div>
     </div>

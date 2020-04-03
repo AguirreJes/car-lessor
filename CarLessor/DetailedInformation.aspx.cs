@@ -27,14 +27,17 @@ namespace CarLessor
         {
             if (GridViewDetail.Rows.Count > 0)
             {
-                foreach (GridView row in GridViewDetail.Rows)
+                for(int i = 0; i < GridViewDetail.Rows.Count; i++)
                 {
-                    TextBox inputQuantityDays = (TextBox)row.FindControl("quantityDays");
-                    TextBox inputQuantityCars = (TextBox)row.FindControl("quantityCar");
+                    TextBox inputQuantityDays = (TextBox)GridViewDetail.Rows[i].FindControl("quantityDay");
+                    TextBox inputQuantityCars = (TextBox)GridViewDetail.Rows[i].FindControl("quantityCar");
+                    string quantityDays = inputQuantityDays.Text;
+                    string quantityCars = inputQuantityCars.Text;
 
-                    if(null != inputQuantityDays && null != inputQuantityCars)
+                    if (!string.IsNullOrEmpty(quantityDays) && !string.IsNullOrEmpty(quantityCars))
                     {
-
+                        Label inputIdCar = (Label)GridViewDetail.Rows[i].FindControl("idautos");
+                        ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text);      
                     }
                 }
             }
