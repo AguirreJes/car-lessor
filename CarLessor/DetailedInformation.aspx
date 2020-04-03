@@ -1,18 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetailedInformation.aspx.cs" Inherits="CarLessor.DetailedInformation" %>
+﻿<%@ Page Title="Informacion detallada" Page Language="C#" AutoEventWireup="true" CodeBehind="DetailedInformation.aspx.cs" Inherits="CarLessor.DetailedInformation" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-        <asp:Table ID="Table1" runat="server">
-        </asp:Table>
-    </form>
-</body>
-</html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+</asp:Content>
