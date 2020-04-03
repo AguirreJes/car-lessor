@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace CarLessor
 {
@@ -27,6 +28,15 @@ namespace CarLessor
                 response = true;
             }
             return response;
+        }
+
+        public static void DetailInformation(GridView inventoryCar)
+        {
+            String query = "select * from carlessor.autos";
+            MySqlCommand cmd;
+            cmd = new MySqlCommand(query, getConnection());
+            inventoryCar.DataSource = cmd.ExecuteReader();
+            inventoryCar.DataBind();
         }
 
         public static MySqlConnection getConnection()
