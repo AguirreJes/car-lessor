@@ -52,10 +52,12 @@ namespace CarLessor
             {
                 showMessage("Error Message", exc.Message);
             }
+            
         }
 
-        public static void updateDetail(string idcar, string quantityDays, string quantityCars)
+        public static Boolean updateDetail(string idcar, string quantityDays, string quantityCars)
         {
+            Boolean redirect = false;
             try
             {
                 MySqlConnection connectionBd = getConnection();
@@ -67,11 +69,13 @@ namespace CarLessor
             cmd.Parameters.AddWithValue("@cantidadauto", quantityCars);
             cmd.ExecuteNonQuery();
             connectionBd.Close();
+                redirect = true;
             }
             catch (Exception exc)
             {
                 showMessage("Error Message", exc.Message);
             }
+            return redirect;
         }
 
         private static MySqlConnection getConnection()

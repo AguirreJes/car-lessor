@@ -25,6 +25,7 @@ namespace CarLessor
 
         protected void sendDetail_Click(object sender, EventArgs e)
         {
+            Boolean redirect = false;
             if (GridViewDetail.Rows.Count > 0)
             {
                 for(int i = 0; i < GridViewDetail.Rows.Count; i++)
@@ -37,11 +38,18 @@ namespace CarLessor
                     if (!string.IsNullOrEmpty(quantityDays) && !string.IsNullOrEmpty(quantityCars))
                     {
                         Label inputIdCar = (Label)GridViewDetail.Rows[i].FindControl("idautos");
-                        ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text);      
+                        redirect = ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text);      
                     }
                 }
             }
-
+            if (redirect) 
+                {
+                    Response.Redirect("~/FormFinal.aspx");
+                }
+            else
+                {
+                    Response.Redirect("~/ErrorSignIn.aspx");
+                }
         }
     }
 }
