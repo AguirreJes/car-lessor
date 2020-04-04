@@ -88,12 +88,11 @@ INSERT INTO `carlessor`.`login` (`username`,`password`) VALUES ('Administrador',
 -- -----------------------------------------------------
 -- Data `carlessor`.`autos`
 -- -----------------------------------------------------
-INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`, `cantidadauto`,`diaalquilado`) VALUES('honda.jpg','BMW','2020',100,'Cuenta con 5 asientos de cuero en negro, cámara de visión trasera multiángulo con directrices, pantalla táctil de audio y bolsas de aire delanteras y laterales tipo cortina.',5,null,null);
-INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`)  VALUES('bmw.jpg','HONDA','2020',75,'Cuenta con 5 asientos deportivos de cuero en negro con moldura decorativa, cámara de visión trasera multiángulo con directrices, pantalla táctil de audio, bolsas de aire delanteras y laterales tipo cortina y techo de cristal panorámico.',10,null,null);
-INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`)  VALUES('toyota.jpg','TOYOTA','2018',68.78,'Cuenta con 5 asiento y el sistema Toyota Safety Sense, que reduce el riesgo de colisiones, acompañado de sensores de proximidad y 7 bolsas de aire para proteger a todos los pasajeros de posibles lesiones',3,null,null);
-INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`) VALUES('mitsubishi.jpg','MITSUBISHI','2017',45.65,'Neumáticos 175/65R14 + ruedas de acero de 14” con tapa central de rueda, material de los 4 asientos (cuero) y  Airbag SRS (pasajero delantero',2,null,null);
-INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`)  VALUES('lexus.jpg','LEXUS','2019',259.98,'Cuenta con 5 asientos de diseño ergonómico, si tiene un teléfono compatible con Qi, el RX 350 puede cargarlo de forma inalámbrica mediante la bandeja de carga disponible,luces de giro de ángulo amplio, pantalla en parabrisas y más lujos',3,null,null);
-
+INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`, `cantidadauto`,`diaalquilado`) VALUES('images/honda.jpg','BMW','2020',100,'Cinco asientos con acabados de lujo y bolsas de aires.',5,null,null);
+INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`)  VALUES('images/bmw.jpg','HONDA','2020',75,'Cinco asientos, acabado deportivo y bolsas de aires.',10,null,null);
+INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`)  VALUES('images/toyota.jpg','TOYOTA','2018',68.78,'Cinco asiento y siete bolsas de airte y  sistema Toyota Safety Sense.',3,null,null);
+INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`) VALUES('images/mitsubishi.jpg','MITSUBISHI','2017',45.65,'Cinco asientos acabados estándar y bolsas de aires.',2,null,null);
+INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`)  VALUES('images/lexus.jpg','LEXUS','2019',259.98,'Cinco asientos con acabados de lujo y cristal panoramico.',3,null,null);
 
 show tables;
 select * from carlessor.login;
