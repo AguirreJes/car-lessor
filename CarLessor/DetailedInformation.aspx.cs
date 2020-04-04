@@ -34,13 +34,25 @@ namespace CarLessor
                 {
                     TextBox inputQuantityDays = (TextBox)GridViewDetail.Rows[i].FindControl("quantityDay");
                     TextBox inputQuantityCars = (TextBox)GridViewDetail.Rows[i].FindControl("quantityCar");
+                    Label labelquantityCarsBd = (Label)GridViewDetail.Rows[i].FindControl("stock");
+
                     string quantityDays = inputQuantityDays.Text;
                     string quantityCars = inputQuantityCars.Text;
+                    string quantityCarsBd = labelquantityCarsBd.Text;
 
-                    if (!string.IsNullOrEmpty(quantityDays) && !string.IsNullOrEmpty(quantityCars))
+                    if (!string.IsNullOrEmpty(quantityDays) && !string.IsNullOrEmpty(quantityCars) && !string.IsNullOrEmpty(quantityCarsBd))
                     {
                         Label inputIdCar = (Label)GridViewDetail.Rows[i].FindControl("idautos");
-                        redirect = ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text);      
+                        if (Convert.ToInt32(quantityCars) <= Convert.ToInt32(quantityCarsBd))
+                        {
+                            Int32 stockFinal = Convert.ToInt32(quantityCarsBd) - Convert.ToInt32(quantityCars);
+                            redirect = ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text, stockFinal);
+                        }
+                        else
+                        {
+
+                        }
+                            
                     }
                 }
             }

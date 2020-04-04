@@ -17,7 +17,11 @@
                 <asp:BoundField HeaderText="Año" DataField="año" />
                 <asp:BoundField HeaderText="Tarifa día" DataField="tarifadia" />
                 <asp:BoundField HeaderText="Descripción" DataField="descripcion" />
-                <asp:BoundField HeaderText="Cantidad disponible" DataField="stock" />
+                <asp:TemplateField HeaderText="Cantidad disponible">
+                    <ItemTemplate>
+                        <asp:Label ID="stock" runat="server" Text='<%# Bind("stock") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Ingrese cantidad de autos">
                     <ItemTemplate>
                         <asp:TextBox ID="quantityCar" runat="server"></asp:TextBox>
