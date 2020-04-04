@@ -5,9 +5,6 @@
         <h5 class="text-center text-uppercase">Inventario de autos</h5>
         <asp:GridView ID="GridViewDetail" CssClass="table table-bordered" HeaderStyle-CssClass="bg-dark text-white" AutoGenerateColumns="False" runat="server">
             <Columns>
-                <asp:ImageField HeaderText="Imagen" ControlStyle-Height="50" DataImageUrlField="imagen">
-                    <ControlStyle Height="50px"></ControlStyle>
-                </asp:ImageField>
                 <asp:TemplateField HeaderText="ID">
                     <ItemTemplate>
                         <asp:Label ID="idautos" runat="server" Text='<%# Bind("idautos") %>'></asp:Label>
@@ -17,7 +14,11 @@
                 <asp:BoundField HeaderText="Año" DataField="año" />
                 <asp:BoundField HeaderText="Tarifa día" DataField="tarifadia" />
                 <asp:BoundField HeaderText="Descripción" DataField="descripcion" />
-                <asp:BoundField HeaderText="Cantidad disponible" DataField="stock" />
+                <asp:TemplateField HeaderText="Cantidad disponible">
+                    <ItemTemplate>
+                        <asp:Label ID="stock" runat="server" Text='<%# Bind("stock") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Ingrese cantidad de autos">
                     <ItemTemplate>
                         <asp:TextBox ID="quantityCar" runat="server"></asp:TextBox>

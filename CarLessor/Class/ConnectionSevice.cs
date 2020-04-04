@@ -36,16 +36,15 @@ namespace CarLessor
             return response;
         }
 
-        public static void DetailInformation(GridView inventoryCar)
+        public static void DetailInformation(GridView gridView, string querySentence)
         {
             try
             {
                 MySqlConnection connectionBd = getConnection();
-                string query = "select * from carlessor.autos";
                 MySqlCommand cmd;
-                cmd = new MySqlCommand(query, connectionBd);
-                inventoryCar.DataSource = cmd.ExecuteReader();
-                inventoryCar.DataBind();
+                cmd = new MySqlCommand(querySentence, connectionBd);
+                gridView.DataSource = cmd.ExecuteReader();
+                gridView.DataBind();
                 connectionBd.Close();
             }
             catch (Exception exc)
@@ -55,18 +54,19 @@ namespace CarLessor
             
         }
 
-        public static Boolean updateDetail(string idcar, string quantityDays, string quantityCars)
+        public static Boolean updateDetail(string idcar, string quantityDays, string quantityCars, Int32 quantityStock)
         {
             Boolean redirect = false;
             try
             {
                 MySqlConnection connectionBd = getConnection();
-            string query = "update carlessor.autos set diaalquilado = @diaalquilado, cantidadauto = @cantidadauto where idautos = @idautos";
+            string query = "update carlessor.autos set diaalquilado = @diaalquilado, cantidadauto = @cantidadauto, stock = @stock  where idautos = @idautos";
             MySqlCommand cmd;
             cmd = new MySqlCommand(query, connectionBd);
             cmd.Parameters.AddWithValue("@idautos", idcar);
             cmd.Parameters.AddWithValue("@diaalquilado", quantityDays);
             cmd.Parameters.AddWithValue("@cantidadauto", quantityCars);
+            cmd.Parameters.AddWithValue("@stock", quantityStock);
             cmd.ExecuteNonQuery();
             connectionBd.Close();
                 redirect = true;

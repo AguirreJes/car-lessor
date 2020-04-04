@@ -9,6 +9,7 @@ namespace CarLessor
 {
     public partial class DetailedInformation : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,7 +21,8 @@ namespace CarLessor
 
         private void BindDataList()
         {
-            ConnectionSevice.DetailInformation(inventoryCar: GridViewDetail);
+            string query = "select * from carlessor.autos";
+            ConnectionSevice.DetailInformation(gridView: GridViewDetail, query);
         }
 
         protected void sendDetail_Click(object sender, EventArgs e)
@@ -32,24 +34,31 @@ namespace CarLessor
                 {
                     TextBox inputQuantityDays = (TextBox)GridViewDetail.Rows[i].FindControl("quantityDay");
                     TextBox inputQuantityCars = (TextBox)GridViewDetail.Rows[i].FindControl("quantityCar");
+                    Label labelquantityCarsBd = (Label)GridViewDetail.Rows[i].FindControl("stock");
+
                     string quantityDays = inputQuantityDays.Text;
                     string quantityCars = inputQuantityCars.Text;
+                    string quantityCarsBd = labelquantityCarsBd.Text;
 
-                    if (!string.IsNullOrEmpty(quantityDays) && !string.IsNullOrEmpty(quantityCars))
+                    if (!string.IsNullOrEmpty(quantityDays) && !string.IsNullOrEmpty(quantityCars) && !string.IsNullOrEmpty(quantityCarsBd))
                     {
                         Label inputIdCar = (Label)GridViewDetail.Rows[i].FindControl("idautos");
-                        redirect = ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text);      
+                        if (Convert.ToInt32(quantityCars) <= Convert.ToInt32(quantityCarsBd))
+                        {
+                            Int32 stockFinal = Convert.ToInt32(quantityCarsBd) - Convert.ToInt32(quantityCars);
+                            redirect = ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text, stockFinal);
+                        }
+                        else
+                        {
+                            Response.Write("<script>alert('Cantidad de autos ingresa es mayor a nuestro stock, Favor verifique') </script>");
+                        }
                     }
                 }
-            }
-            if (redirect) 
+                if (redirect)
                 {
                     Response.Redirect("~/FormFinal.aspx");
                 }
-            else
-                {
-                    Response.Redirect("~/ErrorSignIn.aspx");
-                }
+            }
         }
     }
 }
