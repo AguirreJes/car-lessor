@@ -54,18 +54,19 @@ namespace CarLessor
             
         }
 
-        public static Boolean updateDetail(string idcar, string quantityDays, string quantityCars)
+        public static Boolean updateDetail(string idcar, string quantityDays, string quantityCars, Int32 quantityStock)
         {
             Boolean redirect = false;
             try
             {
                 MySqlConnection connectionBd = getConnection();
-            string query = "update carlessor.autos set diaalquilado = @diaalquilado, cantidadauto = @cantidadauto where idautos = @idautos";
+            string query = "update carlessor.autos set diaalquilado = @diaalquilado, cantidadauto = @cantidadauto, stock = @stock  where idautos = @idautos";
             MySqlCommand cmd;
             cmd = new MySqlCommand(query, connectionBd);
             cmd.Parameters.AddWithValue("@idautos", idcar);
             cmd.Parameters.AddWithValue("@diaalquilado", quantityDays);
             cmd.Parameters.AddWithValue("@cantidadauto", quantityCars);
+            cmd.Parameters.AddWithValue("@stock", quantityStock);
             cmd.ExecuteNonQuery();
             connectionBd.Close();
                 redirect = true;
