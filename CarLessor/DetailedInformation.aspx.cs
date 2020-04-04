@@ -50,20 +50,15 @@ namespace CarLessor
                         }
                         else
                         {
-
+                            Response.Write("<script>alert('Cantidad de autos ingresa es mayor a nuestro stock, Favor verifique') </script>");
                         }
-                            
                     }
                 }
-            }
-            if (redirect) 
+                if (redirect)
                 {
                     Response.Redirect("~/FormFinal.aspx");
                 }
-            else
-                {
-                    Response.Redirect("~/ErrorSignIn.aspx");
-                }
+            }
         }
     }
 }
