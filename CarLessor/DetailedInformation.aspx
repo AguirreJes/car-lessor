@@ -35,6 +35,30 @@
             <HeaderStyle CssClass="bg-dark text-white"></HeaderStyle>
         </asp:GridView>
         <div class="row">
+            <div class="form-group col-md-3">
+                <div class="container">
+                    <label>Sexo</label>
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButtonList ID="radioTypeSex" runat="server" class="form-check-input" RepeatDirection="Horizontal">
+                            <asp:ListItem Text="Masculino" Value="M"/>
+                            <asp:ListItem Text="Femenino" Value="F"/>
+                        </asp:RadioButtonList>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <div class="container">
+                    <label>Cobertura</label>
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButtonList ID="radioTypeCoverage" runat="server" class="form-check-input" RepeatDirection="Horizontal">
+                            <asp:ListItem Text="Completo" Value="F"/>
+                            <asp:ListItem Text="Parcial" Value="P"/>
+                        </asp:RadioButtonList>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-2">
                 <asp:Button ID="sendDetail" runat="server" Text="Guardar" class="btn btn-lg btn-block btn btn-dark" type="submit" OnClick="sendDetail_Click" />
             </div>
