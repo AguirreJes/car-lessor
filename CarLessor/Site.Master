@@ -14,8 +14,26 @@
     </asp:PlaceHolder>
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <style>
+        #navbarHome {
+            margin-top: -50px
+        }
 
+        #navbarHeader {
+            margin-bottom: 15px;
+            margin-top: -50px;
+        }
+
+        #titleInventory {
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        #additionalDataSection {
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -38,25 +56,23 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <div class="collapse bg-dark" id="navbarHeader">
+        <div class="collapse bg-dark navbarHeader" id="navbarHeader">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
                         <h4 class="text-white">Acerca de</h4>
-                        <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                     </div>
                     <div class="col-sm-4 offset-md-1 py-4">
                         <h4 class="text-white">Contacto</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Sigueme en Twitter</a></li>
-                            <li><a href="#" class="text-white">Me gusta en Facebook</a></li>
                             <li><a href="#" class="text-white">Correo electronico</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="navbar navbar-dark bg-dark shadow-sm"id="navbarHome">
             <div class="container d-flex justify-content-between">
                 <a href="#" class="navbar-brand d-flex align-items-center">
                      <img src="https://freesvg.org/img/car-logo.png" width="50" height="50" class="d-inline-block align-top" alt="Car vector logo">
