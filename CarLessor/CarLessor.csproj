@@ -257,6 +257,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Class\ConnectionSevice.cs" />
+    <Compile Include="Class\Pricing.cs" />
     <Compile Include="DetailedInformation.aspx.cs">
       <DependentUpon>DetailedInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
