@@ -1,9 +1,5 @@
 ﻿using CarLessor.Class;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace CarLessor
@@ -13,10 +9,10 @@ namespace CarLessor
         //Protected Methods
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 BindDataList();
+                BindDropDownList();
             }
         }
 
@@ -38,7 +34,7 @@ namespace CarLessor
                     Int32 quantityDays = !string.IsNullOrEmpty(inputQuantityDays.Text) ? Convert.ToInt32(inputQuantityDays.Text):0;
                     Int32 quantityCars = !string.IsNullOrEmpty(inputQuantityCars.Text) ? Convert.ToInt32(inputQuantityCars.Text) : 0;
                     Int32 quantityCarsBd = !string.IsNullOrEmpty(labelquantityCarsBd.Text) ? Convert.ToInt32(labelquantityCarsBd.Text) : 0;
-                    double taxByCar = !string.IsNullOrEmpty(labelquantityCarsBd.Text) ? Convert.ToDouble(labelquantityCarsBd.Text) : 0;
+                    double taxByCar = !string.IsNullOrEmpty(labeltaxByCarsBd.Text) ? Convert.ToDouble(labeltaxByCarsBd.Text) : 0;
 
                     Pricing response = CalculateBySex(sex, quantityDays, taxByCar, coverage);
 
@@ -52,7 +48,7 @@ namespace CarLessor
                         }
                         else
                         {
-                            Response.Write("<script>alert('Cantidad de autos ingresa es mayor a nuestro stock, Favor verifique') </script>");
+                            Response.Write("<div class=+"+"alert alert-danger"+"+>strong>Error!</strong>Cantidad de autos ingresa es mayor a nuestro stock, Favor verifique</div>");
                         }
                     }
                 }
@@ -63,17 +59,17 @@ namespace CarLessor
             }
         }
 
-        protected void coverageInfo_Load(object sender, EventArgs e)
-        {
-            string query = "select * from carlessor.cobertura";
-            ConnectionSevice.DropDownListInfo(dropDownList: coverageInfo, query);
-        }
-
         //Private Methods
         private void BindDataList()
         {
             string query = "select * from carlessor.autos";
             ConnectionSevice.DetailInformation(gridView: GridViewDetail, query);
+        }
+
+        private void BindDropDownList()
+        {
+            string query = "select * from carlessor.cobertura";
+            ConnectionSevice.DropDownListInfo(dropDownList: coverageInfo, query);
         }
 
         private Pricing CalculateBySex(string sex, Int32 quantityDays, double taxByCar, string coverage)

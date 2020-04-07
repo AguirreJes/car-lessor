@@ -52,7 +52,7 @@
                 <div class="container">
                     <label class="font-weight-bold">Cobertura</label>
                     <div>
-                        <asp:DropDownList ID="coverageInfo" runat="server" OnLoad="coverageInfo_Load">
+                        <asp:DropDownList ID="coverageInfo" runat="server">
                         </asp:DropDownList>
                     </div>
                 </div>
