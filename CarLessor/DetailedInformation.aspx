@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid">
-        <h5 class="text-center text-uppercase">Inventario de autos</h5>
+        <h5 class="text-center text-uppercase" id="titleInventory">Inventario de autos</h5>
         <asp:GridView ID="GridViewDetail" CssClass="table table-bordered" HeaderStyle-CssClass="bg-dark text-white" AutoGenerateColumns="False" runat="server">
             <Columns>
                 <asp:TemplateField HeaderText="ID">
@@ -11,6 +11,7 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:ImageField HeaderText="Imagen" ControlStyle-Height="140" ControlStyle-Width="160" DataImageUrlField="imagen">
+                    <ControlStyle Height="140px" Width="160px"></ControlStyle>
                 </asp:ImageField>
                 <asp:BoundField HeaderText="Modelo" DataField="modelo" />
                 <asp:BoundField HeaderText="Año" DataField="año" />
@@ -21,39 +22,38 @@
                         <asp:Label ID="stock" runat="server" Text='<%# Bind("stock") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ingrese cantidad de autos">
+                <asp:TemplateField HeaderText="Cantidad de autos">
                     <ItemTemplate>
-                        <asp:TextBox ID="quantityCar" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="quantityCar" runat="server" Width="100px" Max="9999" Min="1" CausesValidation="true" type="Number"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ingrese cantidad de dias">
+                <asp:TemplateField HeaderText="Cantidad de dias">
                     <ItemTemplate>
-                        <asp:TextBox ID="quantityDay" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="quantityDay" runat="server" Width="100px" Max="9999" Min="1" CausesValidation="true" type="Number"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
             <HeaderStyle CssClass="bg-dark text-white"></HeaderStyle>
         </asp:GridView>
+        <h4 id="additionalDataSection">Datos adicionales</h4>
         <div class="row">
             <div class="form-group col-md-3">
                 <div class="container">
-                    <label>Sexo</label>
+                    <label class="font-weight-bold">Sexo</label>
                     <div class="form-check form-check-inline">
                         <asp:RadioButtonList ID="radioTypeSex" runat="server" class="form-check-input" RepeatDirection="Horizontal">
-                            <asp:ListItem Text="Masculino" Value="M"/>
-                            <asp:ListItem Text="Femenino" Value="F"/>
+                            <asp:ListItem Text="Masculino" Value="M" />
+                            <asp:ListItem Text="Femenino" Value="F" />
                         </asp:RadioButtonList>
                     </div>
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <div class="container">
-                    <label>Cobertura</label>
-                    <div class="form-check form-check-inline">
-                        <asp:RadioButtonList ID="radioTypeCoverage" runat="server" class="form-check-input" RepeatDirection="Horizontal">
-                            <asp:ListItem Text="Completo" Value="F"/>
-                            <asp:ListItem Text="Parcial" Value="P"/>
-                        </asp:RadioButtonList>
+                    <label class="font-weight-bold">Cobertura</label>
+                    <div>
+                        <asp:DropDownList ID="coverageInfo" runat="server" OnLoad="coverageInfo_Load">
+                        </asp:DropDownList>
                     </div>
                 </div>
             </div>
