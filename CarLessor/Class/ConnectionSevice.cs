@@ -78,6 +78,48 @@ namespace CarLessor
             return redirect;
         }
 
+        public static void DropDownListInfo(DropDownList dropDownList, string querySentence)
+        {
+            try
+            {
+                MySqlConnection connectionBd = getConnection();
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(querySentence, connectionBd);
+                dropDownList.DataSource = cmd.ExecuteReader();
+                dropDownList.DataTextField = "descripcion";
+                dropDownList.DataValueField = "tipo";
+                dropDownList.DataBind();
+                connectionBd.Close();
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+
+        }
+
+        public static double getCoverageById(String id)
+        {
+            double tax = 0;
+            try
+            {
+                MySqlConnection connectionBd = getConnection();
+
+                string query = "select valor from carlessor.cobertura where tipo = @tipo";
+                MySqlCommand cmd;
+                cmd = new MySqlCommand(query, connectionBd);
+                cmd.Parameters.AddWithValue("@tipo", id);
+                cmd.ExecuteNonQuery();
+                tax = Convert.ToDouble(cmd.ExecuteScalar());
+                connectionBd.Close();
+            }
+            catch (Exception exc)
+            {
+                showMessage("Error Message", exc.Message);
+            }
+            return tax;
+        }
+
         private static MySqlConnection getConnection()
         {
             MySqlConnection con;
