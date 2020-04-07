@@ -33,13 +33,13 @@ namespace CarLessor
         protected global::System.Web.UI.WebControls.RadioButtonList radioTypeSex;
 
         /// <summary>
-        /// Control radioTypeCoverage.
+        /// Control coverageInfo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList radioTypeCoverage;
+        protected global::System.Web.UI.WebControls.DropDownList coverageInfo;
 
         /// <summary>
         /// Control sendDetail.
