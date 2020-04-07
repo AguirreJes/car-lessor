@@ -9,5 +9,6 @@ namespace CarLessor.Class
     {
         public double amount { get; set; }
         public double discount { get; set; }
+        public double totalAmount { get; set; }
     }
 }

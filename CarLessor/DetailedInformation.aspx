@@ -13,10 +13,14 @@
                 <asp:ImageField HeaderText="Imagen" ControlStyle-Height="140" ControlStyle-Width="160" DataImageUrlField="imagen">
                     <ControlStyle Height="140px" Width="160px"></ControlStyle>
                 </asp:ImageField>
-                <asp:BoundField HeaderText="Modelo" DataField="modelo" />
-                <asp:BoundField HeaderText="Año" DataField="año" />
-                <asp:BoundField HeaderText="Tarifa día" DataField="tarifadia" />
-                <asp:BoundField HeaderText="Descripción" DataField="descripcion" />
+                <asp:BoundField HeaderText="Modelo" DataField="modelo"/>
+                <asp:BoundField HeaderText="Año" DataField="año"/>
+                <asp:TemplateField HeaderText="Tarifa día">
+                    <ItemTemplate>
+                        <asp:Label ID="tarifadia" runat="server" Text='<%# Bind("tarifadia") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField HeaderText="Descripción" DataField="descripcion"/>
                 <asp:TemplateField HeaderText="Cantidad disponible">
                     <ItemTemplate>
                         <asp:Label ID="stock" runat="server" Text='<%# Bind("stock") %>'></asp:Label>
@@ -52,7 +56,7 @@
                 <div class="container">
                     <label class="font-weight-bold">Cobertura</label>
                     <div>
-                        <asp:DropDownList ID="coverageInfo" runat="server">
+                        <asp:DropDownList ID="coverageInfo" runat="server"  OnSelectedIndexChanged="coverageInfo_SelectedIndexChanged">
                         </asp:DropDownList>
                     </div>
                 </div>
