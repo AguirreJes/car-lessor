@@ -33,6 +33,15 @@ namespace CarLessor
         protected global::System.Web.UI.WebControls.RadioButtonList radioTypeSex;
 
         /// <summary>
+        /// Control SexRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SexRequired;
+
+        /// <summary>
         /// Control coverageInfo.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace CarLessor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList coverageInfo;
+
+        /// <summary>
+        /// Control RequiredCovegae.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredCovegae;
 
         /// <summary>
         /// Control sendDetail.

@@ -38,7 +38,7 @@ namespace CarLessor
                     Int32 quantityCarsBd = !string.IsNullOrEmpty(labelquantityCarsBd.Text) ? Convert.ToInt32(labelquantityCarsBd.Text) : 0;
                     double taxByCar = !string.IsNullOrEmpty(labeltaxByCarsBd.Text) ? Convert.ToDouble(labeltaxByCarsBd.Text) : 0;
 
-                    Pricing response = CalculateBySex(sex, quantityDays, quantityCars, taxByCar, coverage);
+                    Pricing pricingInfo = CalculateBySex(sex, quantityDays, quantityCars, taxByCar, coverage);
 
                     if (quantityDays > 0 && quantityCars > 0 && quantityCarsBd > 0)
                     {
@@ -46,11 +46,15 @@ namespace CarLessor
                         if (quantityCars <= quantityCarsBd)
                         {
                             Int32 stockFinal = quantityCarsBd - quantityCars;
-                            redirect = ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text, stockFinal);
+                            redirect = ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text, stockFinal, pricingInfo.amount, pricingInfo.discount, pricingInfo.totalAmount);
                         }
                         else
                         {
-                            Response.Write("<div class=+"+"alert alert-danger"+"+>strong>Error!</strong>Cantidad de autos ingresa es mayor a nuestro stock, Favor verifique</div>");
+                            redirect = false;
+                            BindDataList();
+                            coverageInfo.ClearSelection();
+                            radioTypeSex.ClearSelection();
+                            Response.Write("<script>alert('Cantidad de autos ingresa es mayor a nuestro stock, Favor verifique') </script>");
                         }
                     }
                 }
@@ -83,25 +87,24 @@ namespace CarLessor
         {
             Pricing pricing = new Pricing();
             double coverageTax = ConnectionSevice.getCoverageById(coverage);
-    
+            
+            pricing.amount = quantityDays * coverageTax * quantityCars * taxByCar;
+            
             switch (sex)
             {
                 case "M":
-                    pricing.amount = quantityDays * coverageTax * quantityCars * taxByCar;
                     pricing.discount = quantityDays >=5 ? pricing.amount * 0.20 : pricing.amount * 0.05;
-                    pricing.totalAmount = pricing.amount - pricing.discount;
                     break;
 
                 case "F":
-                    pricing.amount = quantityDays * coverageTax * quantityCars * taxByCar;
                     pricing.discount = quantityDays >= 5 ? pricing.amount * 0.15 : pricing.amount * 0.10;
-                    pricing.totalAmount = pricing.amount - pricing.discount;
                     break;
 
                 default:
                     Console.WriteLine("No llego el dato sexo");
                     break;
             }
+            pricing.totalAmount = pricing.amount - pricing.discount;
             return pricing;
         }
     }

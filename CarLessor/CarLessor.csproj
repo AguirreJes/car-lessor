@@ -115,7 +115,6 @@
     <Content Include="images\lexus.jpg" />
     <Content Include="images\mitsubishi.jpg" />
     <Content Include="images\toyota.jpg" />
-    <Content Include="SignIn.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -271,13 +270,6 @@
     </Compile>
     <Compile Include="ErrorSignIn.aspx.designer.cs">
       <DependentUpon>ErrorSignIn.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SignIn.aspx.cs">
-      <DependentUpon>SignIn.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SignIn.aspx.designer.cs">
-      <DependentUpon>SignIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

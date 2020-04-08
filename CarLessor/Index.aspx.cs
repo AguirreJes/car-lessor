@@ -13,5 +13,17 @@ namespace CarLessor
         {
 
         }
+
+        protected void signIn_Click(object sender, EventArgs e)
+        {
+            if (ConnectionSevice.SignIn(inputUser.Text, inputPassword.Text))
+            {
+                Response.Redirect("~/DetailedInformation.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/ErrorSignIn.aspx");
+            }
+        }
     }
 }

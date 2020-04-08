@@ -54,19 +54,22 @@ namespace CarLessor
             
         }
 
-        public static Boolean updateDetail(string idcar, string quantityDays, string quantityCars, Int32 quantityStock)
+        public static Boolean updateDetail(string idcar, string quantityDays, string quantityCars, Int32 quantityStock, double amount, double discount, double totalAmount)
         {
             Boolean redirect = false;
             try
             {
                 MySqlConnection connectionBd = getConnection();
-            string query = "update carlessor.autos set diaalquilado = @diaalquilado, cantidadauto = @cantidadauto, stock = @stock  where idautos = @idautos";
+            string query = "update carlessor.autos set diaalquilado = @diaalquilado, cantidadauto = @cantidadauto, stock = @stock, subtotal = @subtotal, descuento = @descuento, total = @total  where idautos = @idautos";
             MySqlCommand cmd;
             cmd = new MySqlCommand(query, connectionBd);
             cmd.Parameters.AddWithValue("@idautos", idcar);
             cmd.Parameters.AddWithValue("@diaalquilado", quantityDays);
             cmd.Parameters.AddWithValue("@cantidadauto", quantityCars);
             cmd.Parameters.AddWithValue("@stock", quantityStock);
+            cmd.Parameters.AddWithValue("@subtotal", amount);
+            cmd.Parameters.AddWithValue("@descuento", discount);
+            cmd.Parameters.AddWithValue("@total", totalAmount);
             cmd.ExecuteNonQuery();
             connectionBd.Close();
                 redirect = true;
@@ -90,12 +93,12 @@ namespace CarLessor
                 dropDownList.DataValueField = "tipo";
                 dropDownList.DataBind();
                 connectionBd.Close();
-            }
+                dropDownList.Items.Insert(0, new ListItem("Seleccionar", "Seleccionar"));
+            }        
             catch (Exception exc)
             {
                 showMessage("Error Message", exc.Message);
             }
-
         }
 
         public static double getCoverageById(String id)
@@ -137,7 +140,7 @@ namespace CarLessor
 
         private static void showMessage(string v, string message)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(message);
         }
 
     }

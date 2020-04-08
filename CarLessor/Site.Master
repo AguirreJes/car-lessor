@@ -33,6 +33,10 @@
         #additionalDataSection {
             margin-top: 30px;
         }
+
+        #bannerAlertTax{
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
