@@ -110,7 +110,6 @@
   <ItemGroup>
     <Content Include="DetailedInformation.aspx" />
     <Content Include="DetailSale.aspx" />
-    <Content Include="ErrorSignIn.aspx" />
     <Content Include="images\bmw.jpg" />
     <Content Include="images\honda.jpg" />
     <Content Include="images\lexus.jpg" />
@@ -271,13 +270,6 @@
     </Compile>
     <Compile Include="DetailSale.aspx.designer.cs">
       <DependentUpon>DetailSale.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ErrorSignIn.aspx.cs">
-      <DependentUpon>ErrorSignIn.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ErrorSignIn.aspx.designer.cs">
-      <DependentUpon>ErrorSignIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
