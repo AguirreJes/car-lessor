@@ -13,5 +13,19 @@ namespace CarLessor
         {
 
         }
+
+        protected void signIn_Click(object sender, EventArgs e)
+        {
+            if (ConnectionSevice.SignIn(inputUser.Text, inputPassword.Text))
+            {
+                Response.Redirect("~/DetailedInformation.aspx");
+            }
+            else
+            {
+                inputUser.Text = null;
+                inputPassword.Text = null;
+                Response.Write("<script>alert('Usuario o contrasena erronea, Favor verifique') </script>");
+            }
+        }
     }
 }

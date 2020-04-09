@@ -109,13 +109,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DetailedInformation.aspx" />
+    <Content Include="DetailSale.aspx" />
     <Content Include="ErrorSignIn.aspx" />
     <Content Include="images\bmw.jpg" />
     <Content Include="images\honda.jpg" />
     <Content Include="images\lexus.jpg" />
     <Content Include="images\mitsubishi.jpg" />
     <Content Include="images\toyota.jpg" />
-    <Content Include="SignIn.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -257,6 +257,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Class\ConnectionSevice.cs" />
+    <Compile Include="Class\Pricing.cs" />
     <Compile Include="DetailedInformation.aspx.cs">
       <DependentUpon>DetailedInformation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -264,19 +265,19 @@
     <Compile Include="DetailedInformation.aspx.designer.cs">
       <DependentUpon>DetailedInformation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DetailSale.aspx.cs">
+      <DependentUpon>DetailSale.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetailSale.aspx.designer.cs">
+      <DependentUpon>DetailSale.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ErrorSignIn.aspx.cs">
       <DependentUpon>ErrorSignIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ErrorSignIn.aspx.designer.cs">
       <DependentUpon>ErrorSignIn.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SignIn.aspx.cs">
-      <DependentUpon>SignIn.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SignIn.aspx.designer.cs">
-      <DependentUpon>SignIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
