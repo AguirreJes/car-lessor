@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS `carlessor`.`login` ;
 
 CREATE TABLE IF NOT EXISTS `carlessor`.`login` (
   `idlogin` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(12) NOT NULL,
+  `username` VARCHAR(30) NOT NULL,
   `password` VARCHAR(12) NOT NULL,
   PRIMARY KEY (`idlogin`))
 ENGINE = InnoDB;
@@ -100,6 +100,10 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- -----------------------------------------------------
+-- Data for table `carlessor`.`login`
+-- -----------------------------------------------------
+INSERT INTO `carlessor`.`login`(`username`,`password`) VALUES ('Administrador','Carros2019');
 
 -- -----------------------------------------------------
 -- Data for table `carlessor`.`cobertura`
@@ -111,8 +115,8 @@ INSERT INTO `carlessor`.`cobertura` (`tipo`, `descripcion`, `valor`) VALUES ('P'
 -- -----------------------------------------------------
 -- Data `carlessor`.`autos`
 -- -----------------------------------------------------
-INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`, `cantidadauto`,`diaalquilado`,`subtotal`,`descuento`,`total`) VALUES('images/honda.jpg','BMW','2020',100,'Cinco asientos con acabados de lujo y bolsas de aires.',5,null,null,0.00,0.00,0.00);
-INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`,`subtotal`,`descuento`,`total`)  VALUES('images/bmw.jpg','HONDA','2020',75,'Cinco asientos, acabado deportivo y bolsas de aires.',10,null,null,0.00,0.00,0.00);
+INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`, `cantidadauto`,`diaalquilado`,`subtotal`,`descuento`,`total`) VALUES('images/bmw.jpg','BMW','2020',100,'Cinco asientos con acabados de lujo y bolsas de aires.',5,null,null,0.00,0.00,0.00);
+INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`,`subtotal`,`descuento`,`total`)  VALUES('images/honda.jpg','HONDA','2020',75,'Cinco asientos, acabado deportivo y bolsas de aires.',10,null,null,0.00,0.00,0.00);
 INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`,`subtotal`,`descuento`,`total`)  VALUES('images/toyota.jpg','TOYOTA','2018',68.78,'Cinco asiento y siete bolsas de airte y  sistema Toyota Safety Sense.',3,null,null,0.00,0.00,0.00);
 INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`,`subtotal`,`descuento`,`total`) VALUES('images/mitsubishi.jpg','MITSUBISHI','2017',45.65,'Cinco asientos acabados estándar y bolsas de aires.',2,null,null,0.00,0.00,0.00);
 INSERT INTO `carlessor`.`autos`(`imagen`,`modelo`,`año`,`tarifadia`,`descripcion`,`stock`,`cantidadauto`,`diaalquilado`,`subtotal`,`descuento`,`total`)  VALUES('images/lexus.jpg','LEXUS','2019',259.98,'Cinco asientos con acabados de lujo y cristal panoramico.',3,null,null,0.00,0.00,0.00);
@@ -121,3 +125,4 @@ show tables;
 select * from carlessor.login;
 select * from carlessor.autos;
 select * from carlessor.autos_has_compra;
+

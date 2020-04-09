@@ -22,7 +22,9 @@ namespace CarLessor
             }
             else
             {
-                Response.Redirect("~/ErrorSignIn.aspx");
+                inputUser.Text = null;
+                inputPassword.Text = null;
+                Response.Write("<script>alert('Usuario o contrasena erronea, Favor verifique') </script>");
             }
         }
     }

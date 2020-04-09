@@ -1,5 +1,6 @@
 ﻿using CarLessor.Class;
 using System;
+using System.Web;
 using System.Web.UI.WebControls;
 
 namespace CarLessor
@@ -7,6 +8,10 @@ namespace CarLessor
     public partial class DetailedInformation : System.Web.UI.Page
     {
         public string coverage;
+        public static double totalAmount;
+        public static double amount;
+        public static double discount;
+        public static string sex;
 
         //Protected Methods
         protected void Page_Load(object sender, EventArgs e)
@@ -15,14 +20,16 @@ namespace CarLessor
             {
                 BindDataList();
                 BindDropDownList();
+                
             }
         }
 
         protected void sendDetail_Click(object sender, EventArgs e)
         {
-            Boolean redirect = false;
             if (GridViewDetail.Rows.Count > 0)
             {
+                Random rnd = new Random();
+                int idSale = rnd.Next(1000);
                 for (int i = 0; i < GridViewDetail.Rows.Count; i++)
                 {
                     TextBox inputQuantityDays = (TextBox)GridViewDetail.Rows[i].FindControl("quantityDay");
@@ -30,12 +37,12 @@ namespace CarLessor
                     Label labelquantityCarsBd = (Label)GridViewDetail.Rows[i].FindControl("stock");
                     Label labeltaxByCarsBd = (Label)GridViewDetail.Rows[i].FindControl("tarifadia");
 
-                    string sex = radioTypeSex.SelectedValue;
+                    sex = radioTypeSex.SelectedValue;
                     coverageInfo_SelectedIndexChanged(sender, e);
 
-                    Int32 quantityDays = !string.IsNullOrEmpty(inputQuantityDays.Text) ? Convert.ToInt32(inputQuantityDays.Text):0;
-                    Int32 quantityCars = !string.IsNullOrEmpty(inputQuantityCars.Text) ? Convert.ToInt32(inputQuantityCars.Text) : 0;
-                    Int32 quantityCarsBd = !string.IsNullOrEmpty(labelquantityCarsBd.Text) ? Convert.ToInt32(labelquantityCarsBd.Text) : 0;
+                    int quantityDays = !string.IsNullOrEmpty(inputQuantityDays.Text) ? Convert.ToInt32(inputQuantityDays.Text):0;
+                    int quantityCars = !string.IsNullOrEmpty(inputQuantityCars.Text) ? Convert.ToInt32(inputQuantityCars.Text) : 0;
+                    int quantityCarsBd = !string.IsNullOrEmpty(labelquantityCarsBd.Text) ? Convert.ToInt32(labelquantityCarsBd.Text) : 0;
                     double taxByCar = !string.IsNullOrEmpty(labeltaxByCarsBd.Text) ? Convert.ToDouble(labeltaxByCarsBd.Text) : 0;
 
                     Pricing pricingInfo = CalculateBySex(sex, quantityDays, quantityCars, taxByCar, coverage);
@@ -43,14 +50,19 @@ namespace CarLessor
                     if (quantityDays > 0 && quantityCars > 0 && quantityCarsBd > 0)
                     {
                         Label inputIdCar = (Label)GridViewDetail.Rows[i].FindControl("idautos");
+                        int idCar = !string.IsNullOrEmpty(inputIdCar.Text) ? Convert.ToInt32(inputIdCar.Text) : 0;
                         if (quantityCars <= quantityCarsBd)
                         {
-                            Int32 stockFinal = quantityCarsBd - quantityCars;
-                            redirect = ConnectionSevice.updateDetail(inputIdCar.Text, inputQuantityDays.Text, inputQuantityCars.Text, stockFinal, pricingInfo.amount, pricingInfo.discount, pricingInfo.totalAmount);
+                            int stockFinal = quantityCarsBd - quantityCars;
+                            ConnectionSevice.updateDetail(idCar, inputQuantityDays.Text, inputQuantityCars.Text, stockFinal, pricingInfo.amount, pricingInfo.discount, pricingInfo.totalAmount);
+                            ConnectionSevice.insertSale(idCar, idSale);
+                            
+                            totalAmount = totalAmount + pricingInfo.totalAmount;
+                            amount = amount + pricingInfo.amount;
+                            discount = discount + pricingInfo.discount;
                         }
                         else
                         {
-                            redirect = false;
                             BindDataList();
                             coverageInfo.ClearSelection();
                             radioTypeSex.ClearSelection();
@@ -58,9 +70,12 @@ namespace CarLessor
                         }
                     }
                 }
-                if (redirect)
+                
+
+                if (ConnectionSevice.insertSaleDetail(idSale, sex, coverage, amount, discount, totalAmount))
                 {
-                    Response.Redirect("~/FormFinal.aspx");
+                    HttpContext.Current.Session["idSale"] = idSale;
+                    Response.Redirect("~/DetailSale.aspx");
                 }
             }
         }
@@ -83,7 +98,7 @@ namespace CarLessor
             ConnectionSevice.DropDownListInfo(dropDownList: coverageInfo, query);
         }
 
-        private Pricing CalculateBySex(string sex, Int32 quantityDays, Int32 quantityCars, double taxByCar, string coverage)
+        private Pricing CalculateBySex(string sex, int quantityDays, int quantityCars, double taxByCar, string coverage)
         {
             Pricing pricing = new Pricing();
             double coverageTax = ConnectionSevice.getCoverageById(coverage);
